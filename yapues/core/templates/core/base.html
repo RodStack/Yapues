@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Titulo -->
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between h-16">
+            <div class="flex-shrink-0 flex items-center">
+              <a href="{% url 'core:index' %}" class="text-orange-500 font-bold text-xl">Yapues.cl</a>
+            </div>
+            <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+              <a href="{% url 'item:items' %}?query=&category=1" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
+                Inmuebles
+            </a>
+              <a href="{% url 'item:items' %}?query=&category=2" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
+                Vehículos
+              </a>
+              <a href="{% url 'item:items' %}?query=&category=3" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
+                Marketplace
+              </a>
+              <a href="{% url 'item:items' %}?query=&category=4" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
+                Empleos y Servicios
+              </a>
+              <a href="{% url 'item:items' %}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
+                Buscar
+              </a>
+            </div>
+            <div class="flex items-center">
+              <a href="{% url 'item:new' %}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+                Publicar aviso
+              </a>
+              {% if request.user.is_authenticated %}
+              <div class="ml-4 relative">
+                <a href="{% url 'conversation:inbox' %}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                  Chat
+                </a>
+              </div>
+              <div class="ml-4 relative">
+                <a href="{% url 'dashboard:index' %}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                  Mis Anuncios
+                </a>
+              </div>
+              {% else %}
+                <div class="ml-4 relative">
+                  <a href="{% url 'core:login' %}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                    Ingresar
+                  </a>
+                </div>
+                <div class="ml-4 relative">
+                  <a href="{% url 'core:registro' %}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                    Crear cuenta
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- Interior de la Página -->
+    <div class="px-6 py-6">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <!-- Sección del Footter -->
+    <footer class="bg-gray-900 py-8">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="md:w-2/3 md:pr-6">
+                    <h1 class="text-gray-400">Acerca</h1>
+                    <p class="text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere voluptates obcaecati et eveniet. Dolore officiis, voluptatibus, non cupiditate ut odio nostrum deserunt neque vitae, doloribus alias iusto error mollitia vero.</p>
+                </div>
+                <div class="md:w-2/3"> <!-- Cambiado de md:w-1/3 a md:w-2/3 -->
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Centro de ayuda</h3>
+                        <ul class="mt-4 space-y-2 ml-2">
+                            <li><a href="{% url 'core:contact' %}" class="text-base text-gray-500 hover:text-white">Contacto</a></li>
+                            <li><a href="{% url 'core:registro' %}" class="text-base text-gray-500 hover:text-white">Regístrate</a></li>
+                            <li><a href="#" class="text-base text-gray-500 hover:text-white">Términos y condiciones</a></li>
+                            <li><a href="#" class="text-base text-gray-500 hover:text-white">Políticas de privacidad</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-8">
+                <p class="text-base text-gray-400 text-center">&copy; 2024 Yapues.cl</p>
+            </div>
+        </div>
+    </footer>
+    
+    
+    
+    
+</body>
+</html>
