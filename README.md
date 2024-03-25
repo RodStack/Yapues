@@ -1,4 +1,8 @@
 # Yapues
+![Captura de pantalla 2024-03-25 155604](https://github.com/RodStack/Yapues/assets/57158158/f8ff3ef4-8e61-45ea-bfc6-17d1e9db7ba2)
+![Captura de pantalla 2024-03-25 155610](https://github.com/RodStack/Yapues/assets/57158158/7383dfcc-0542-4b2a-a835-a0871d9eb8f5)
+![Captura de pantalla 2024-03-25 155622](https://github.com/RodStack/Yapues/assets/57158158/c9fd5e6b-74f0-4338-b050-faf445e51f48)
+![Captura de pantalla 2024-03-25 155628](https://github.com/RodStack/Yapues/assets/57158158/df20e39f-9513-4e4b-830b-b0edc79020f6)
 Marketplace Online con Django
 Tecnologías Utilizadas:
 Framework Backend: Django (Python)
